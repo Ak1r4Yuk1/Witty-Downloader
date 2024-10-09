@@ -18,4 +18,4 @@ jobs:
       - name: Install dependencies
         run: npm install puppeteer-extra puppeteer-extra-plugin-stealth axios
       - name:  Run
-        run: .\get_video.cmd ${{github.context.secrets.VIDEO_URL}}
+        run: .\get_video.cmd ${github.context.secrets.VIDEO_URL}
