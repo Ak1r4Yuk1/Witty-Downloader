@@ -83,11 +83,11 @@ async function printMpdRequestPssh(url) {
   console.log("Sto estraendo le chiavi necessarie per il decrypt...per favore attendi...potrebbe volerci 1 o 2 min")
   await sleep(4000)
     // Clicca sul primo bottone
-  await page.click('#rti-privacy-accept-btn-screen1-id');
+  //await page.click('#rti-privacy-accept-btn-screen1-id');
     // Aspetta 3 secondi
   await sleep(5000)  
     // Clicca sul secondo bottone
-  await page.click('#modalpopup556171 > div > div > div > button');
+  //await page.click('#modalpopup556171 > div > div > div > button');
   console.log("Manca poco..")
   await sleep(35000); // Wait for 35 seconds
   await browser.close();
