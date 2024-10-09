@@ -18,4 +18,4 @@ jobs:
       - name: Install dependencies
         run: npm install puppeteer-extra puppeteer-extra-plugin-stealth
       - name:  Run
-        run: get_video.cmd
+        run: .\get_video.cmd
