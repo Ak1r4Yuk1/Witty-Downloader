@@ -16,6 +16,6 @@ jobs:
         with:
           node-version: '18.9.1'
       - name: Install dependencies
-        run: npm install puppeteer-extra puppeteer-extra-plugin-stealth
+        run: npm install puppeteer-extra puppeteer-extra-plugin-stealth axios
       - name:  Run
-        run: .\get_video.cmd
+        run: .\get_video.cmd ${{github.context.secrets.VIDEO_URL}}
