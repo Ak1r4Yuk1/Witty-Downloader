@@ -1,0 +1,21 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name:  Download videos from Witty.tv
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.9.1'
+      - name: Install dependencies
+        run: npm install
+      - name:  Run
+        run: get_video.cmd
