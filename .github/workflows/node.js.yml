@@ -24,7 +24,7 @@ jobs:
       - name:  Run
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
       - name: Extract video title
-        run: set video_title=type data.filename
+        run: powershell -c $video_title = "https://www.wittytv.it/temptation-island/quinta-puntata-martedi-8-ottobre" -replace "https://www.wittytv.it/temptation-island/", ""
         id: extract_title
       - name: Set output
         uses: actions/setup-go@v3
