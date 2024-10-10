@@ -24,10 +24,10 @@ jobs:
       - name:  Run
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
       - name:  Upload  artifact to Github
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: videos
-          path: .
+          path: ./*PART00*
       - name: Download video  
         uses: actions/download-artifact@v4
         with:
