@@ -12,11 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Get title
-        run:  $videoUrl = "https://www.wittytv.it/temptation-island/quinta-puntata-martedi-8-ottobre/"
-              $nomePuntata = $videoUrl -replace '^.*/(.*)-.*$', '$1'
-              echo {{env.nomePuntata}}
+        run:  $videoUrl = "https://www.wittytv.it/temptation-island/quinta-puntata-martedi-8-ottobre/"; $nomePuntata = $videoUrl -replace '^.*/(.*)-.*$', '$1' ;echo $nomePuntata
       - name: Stampa nome puntata
-        run: echo ${{env.name_puntata}}
+        run: echo ${{env.nomePuntata}}
       - name:  Setup NodeJS
         uses: actions/setup-node@v3
         with:
