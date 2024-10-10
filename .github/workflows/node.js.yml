@@ -7,8 +7,8 @@ on:
     branches: [ main ]
   workflow_call:
     inputs:
-      video_url:
-        description: 'Video URL'
+      video_title:
+        description: 'Come vuoi chiamare il file? '
         default: 'https://www.wittytv.it/temptation-island/...'
         required: true
         type: string
@@ -33,14 +33,9 @@ jobs:
       - name: Upload video artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ nomePuntata }}
+          name: ${{ video_title }}
           path: ./*PART00*
-      - name: Download video  
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ nomePuntata }}
-      - name: Download Init
-        run: dir
+
 
 
 
