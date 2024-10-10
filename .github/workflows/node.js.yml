@@ -22,4 +22,4 @@ jobs:
       - name: Install ffmpeg
         run: choco install ffmpeg -y
       - name:  Run
-        run: .\get_video.cmd ${{ github.context.secrets.VIDEO_URL }}
+        run: .\get_video.cmd ${{ secrets.VIDEO_URL }}
