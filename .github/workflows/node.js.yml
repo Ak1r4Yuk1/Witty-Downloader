@@ -23,27 +23,15 @@ jobs:
         run: choco install ffmpeg sed -y
       - name:  Run
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
-      - name: Extract video name
-        id: extract
-        run: |
-          $video_title=type .\data.filename
-      - name: Set output
-        uses: actions/setup-go@v3
-        with:
-          go-version: '1.19.0'
-        id: setup-go
-      - name: Run the script
-        run: |
-          echo "Video title: ${{ steps.extract_title.outputs.video_title }}"
       - name: Upload video artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ steps.extract_title.outputs.video_title }}
+          name: videos
           path: ./*PART00*
       - name: Download video  
         uses: actions/download-artifact@v4
         with:
-          name: ${{ steps.extract_title.outputs.video_title }}
+          name: videos
       - name: Download Init
         run: dir
 
