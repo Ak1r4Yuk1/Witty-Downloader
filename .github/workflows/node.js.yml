@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '18.9.1'
       - name: Install dependencies
-        run: npm install puppeteer-extra puppeteer-extra-plugin-stealth axios
+        run: npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth axios
       - name: Download choco
         run: powershell -c "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
       - name: Install ffmpeg
