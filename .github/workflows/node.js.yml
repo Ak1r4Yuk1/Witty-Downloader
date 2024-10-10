@@ -25,15 +25,24 @@ jobs:
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
       - name: Extract video title
         run: video_title=$(echo "${{ vars.VIDEO_URL }}" | sed 's/https:\/\/www\.wittytv\.it\/temptation-island\///')
+        id: extract_title
+      - name: Set output
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.19.0'
+        id: setup-go
+      - name: Run the script
+        run: |
+          echo "Video title: ${{ steps.extract_title.outputs.video_title }}"
       - name: Upload video artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ video_title }}
+          name: ${{ steps.extract_title.outputs.video_title }}
           path: ./*PART00*
       - name: Download video  
         uses: actions/download-artifact@v4
         with:
-          name: ${{ video_title }}
+          name: ${{ steps.extract_title.outputs.video_title }}
       - name: Download Init
         run: dir
 
