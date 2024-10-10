@@ -26,7 +26,7 @@ jobs:
       - name: Extract video name
         id: extract
         run: |
-          video_title=$(echo ${{vars.VIDEO_URL}} | grep -oP '(?<=/)[^/]+$')
+          video_title=$(cat data.filename)
       - name: Set output
         uses: actions/setup-go@v3
         with:
