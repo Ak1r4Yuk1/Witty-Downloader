@@ -23,9 +23,10 @@ jobs:
         run: choco install ffmpeg sed -y
       - name:  Run
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
-      - name: Extract video title
-        run: echo ${{vars.VIDEO_URL}} | for /f "tokens=4 delims=/" %i in ('findstr /r "^"') do set video_title=%i
-        id: extract_title
+      - name: Extract video name
+        id: extract
+        run: |
+          video_title=$(echo $VIDEO_URL | grep -oP '(?<=/)[^/]+$')
       - name: Set output
         uses: actions/setup-go@v3
         with:
