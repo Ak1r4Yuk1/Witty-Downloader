@@ -11,7 +11,14 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name:  Download videos from Witty.tv
+      - name: Estrai nome puntata
+        run: |
+          video_url="${{ env.VIDEO_URL }}"
+          name_puntata=$(echo "$video_url" | sed -E 's#.*/(.*)-.*#\1#')
+          echo "name_puntata=$name_puntata" >> $GITHUB_ENV
+      - name: Stampa nome puntata
+        run: echo ${{name_puntata}}
+      - name:  Setup NodeJS
         uses: actions/setup-node@v3
         with:
           node-version: '18.9.1'
