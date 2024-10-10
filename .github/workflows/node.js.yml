@@ -24,18 +24,16 @@ jobs:
       - name:  Run
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
       - name: Extract video title
-        run: ffprobe -v quiet -print_format json -show_format -show_streams input.mp4 > metadata.json
-      - name: Set title variable
-        run: title=$(jq -r '.format.tags.title' metadata.json)
+        run: video_title=$(echo "${{ vars.VIDEO_URL }}" | sed 's/https:\/\/www\.wittytv\.it\/temptation-island\///')
       - name: Upload video artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ title }}
+          name: ${{ video_title }}
           path: ./*PART00*
       - name: Download video  
         uses: actions/download-artifact@v4
         with:
-          name: ${{ title }}
+          name: ${{ video_title }}
       - name: Download Init
         run: dir
 
