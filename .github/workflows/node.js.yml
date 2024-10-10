@@ -20,7 +20,7 @@ jobs:
       - name: Download choco
         run: powershell -c "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
       - name: Install ffmpeg
-        run: choco install ffmpeg -y
+        run: choco install ffmpeg sed -y
       - name:  Run
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
       - name: Extract video title
