@@ -23,3 +23,8 @@ jobs:
         run: choco install ffmpeg -y
       - name:  Run
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
+      - name: Download video
+        uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+          path: .\*.mp4
