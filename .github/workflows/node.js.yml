@@ -24,7 +24,7 @@ jobs:
       - name:  Run
         run: .\get_video.cmd ${{ vars.VIDEO_URL }}
       - name: Extract video title
-        run: set video_title=echo ${{vars.VIDEO_URL}} | sed s/https:\/\/www\.wittytv\.it\/temptation-island\/// ^| sed "s/\"//g"'
+        run: set video_title=echo ${{vars.VIDEO_URL}} | sed s/https:\/\/www\.wittytv\.it\/temptation-island\/// ^| sed "s/\"//g"
         id: extract_title
       - name: Set output
         uses: actions/setup-go@v3
