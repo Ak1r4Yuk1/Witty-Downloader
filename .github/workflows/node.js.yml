@@ -33,7 +33,7 @@ jobs:
       - name: Upload video artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ video_title }}
+          name: ${{ inputs.video_title }}
           path: ./*PART00*
 
 
