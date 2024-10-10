@@ -11,11 +11,10 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Estrai nome puntata
-        run: |
-          video_url="${{ env.VIDEO_URL }}"
-          name_puntata=$(echo "$video_url" | sed -E 's#.*/(.*)-.*#\1#')
-          echo "name_puntata=$name_puntata" >> $GITHUB_ENV
+      - name: Get title
+        run:  $videoUrl = "https://www.wittytv.it/temptation-island/quinta-puntata-martedi-8-ottobre/"
+              $nomePuntata = $videoUrl -replace '^.*/(.*)-.*$', '$1'
+              echo {{env.nomePuntata}}
       - name: Stampa nome puntata
         run: echo ${{env.name_puntata}}
       - name:  Setup NodeJS
