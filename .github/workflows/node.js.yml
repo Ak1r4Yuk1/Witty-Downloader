@@ -5,14 +5,19 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_call:
+    inputs:
+      video_url:
+        description: 'Video URL'
+        default: 'https://www.wittytv.it/temptation-island/...'
+        required: true
+        type: string
 
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Get title
-        run:  $videoUrl = "${{env.VIDEO_URL}}"; $nomePuntata = $videoUrl -replace '^.*/(.*)-.*?/', '$1' ;echo $nomePuntata
       - name:  Setup NodeJS
         uses: actions/setup-node@v3
         with:
