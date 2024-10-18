@@ -79,19 +79,36 @@ async function printMpdRequestPssh(url) {
     }
 });
 
-  await page.goto(url);
-  console.log("Sto estraendo le chiavi necessarie per il decrypt...per favore attendi...potrebbe volerci 1 o 2 min")
-  await sleep(4000)
-    // Clicca sul primo bottone
-  await page.click('#rti-privacy-accept-btn-screen1-id');
-    // Aspetta 3 secondi
-  await sleep(5000)  
-    // Clicca sul secondo bottone
-  await page.click('#modalpopup556171 > div > div > div > button');
-  console.log("Manca poco..")
-  await sleep(35000); // Wait for 35 seconds
-  await browser.close();
-  const [MPDurl] = printedUrls;
+await page.goto(url);
+console.log("Sto estraendo le chiavi necessarie per il decrypt...per favore attendi...potrebbe volerci 1 o 2 min");
+await sleep(4000);
+
+// Verifica se il primo bottone esiste e cliccalo se esiste
+const firstButton = await page.$('#rti-privacy-accept-btn-screen1-id');
+if (firstButton) {
+    await page.click('#rti-privacy-accept-btn-screen1-id');
+    //console.log("Primo bottone cliccato.");
+} else {
+    //console.log("Primo bottone non trovato.");
+}
+
+// Aspetta 5 secondi
+await sleep(5000);
+
+// Verifica se il secondo bottone esiste e cliccalo se esiste
+const secondButton = await page.$('#modalpopup556171 > div > div > div > button');
+if (secondButton) {
+    await page.click('#modalpopup556171 > div > div > div > button');
+    //console.log("Secondo bottone cliccato.");
+} else {
+    //console.log("Secondo bottone non trovato.");
+}
+
+console.log("Manca poco...");
+await sleep(35000); // Aspetta 35 secondi
+await browser.close();
+const [MPDurl] = printedUrls;
+
 
 //fai request a MPD ed estrai PSSH e salva dentro psshValue
 
@@ -153,7 +170,7 @@ function get_key(psshkey){
   
   const req = https.request(api_url, options, (res) => {
       let data = '';
-  
+
       res.on('data', (chunk) => {
           data += chunk;
       });
@@ -165,11 +182,13 @@ function get_key(psshkey){
           console.log("KEY: ", firstKey);
           fs.writeFile('data.key', firstKey, (err) => {
             if (err) {
-              console.error('Errore durante la scrittura del file:', err);
+              console.log("Non sono riuscito a trovare la chiave, riprova!.")
+              //console.error('Errore durante la scrittura del file:', err);
             } else {
             }
           });
           console.log("License URL:", licenseURL)
+          console.log("Chiavi estratte, adesso scarichiamo il video")
           fs.writeFile('data.licurl', licenseURL, (err) => {
             if (err) {
               console.error('Errore durante la scrittura del file:', err);
@@ -180,7 +199,8 @@ function get_key(psshkey){
   });
   
   req.on('error', (error) => {
-      console.error('Error:', error);
+    console.log("C'è stato un errore, riprova!."); 
+    //console.error('Error:', error);
   });
   
   req.write(payload);

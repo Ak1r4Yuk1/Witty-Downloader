@@ -3,6 +3,7 @@ setlocal enabledelayedexpansion
 
 node app.js %1
 
+echo Attendi finchè non scarico il video, potrebbe volerci un po..
 :: Leggi il contenuto del file data.mpdurl
 set /p mpd_file=<data.mpdurl
 
@@ -14,7 +15,7 @@ set /p filename=<data.filename
 
 :: Esegui il comando n_m3u8dl
 
-N_m3u8DL-RE.exe "!mpd_file!" --key "!key_file!" --save-name "!filename!" -mt -M mp4 -sv best -sa best --del-after-done
+N_m3u8DL-RE.exe "!mpd_file!" --key "!key_file!" --save-name "!filename!" -mt -M mp4 -sv best -sa best --del-after-done --log-level=OFF
 
 @echo off
 
