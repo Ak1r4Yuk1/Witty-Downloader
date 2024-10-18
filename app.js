@@ -47,8 +47,8 @@ if (match && match[1]) {
 
 //Avvia il browser per estrarre il file MPD
 async function printMpdRequestPssh(url) {
-  //const browser = await puppeteer.launch({headless:true, executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe"});
   const browser = await puppeteer.launch({
+    executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe",
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
 });
