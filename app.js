@@ -25,7 +25,7 @@ printMpdRequestPssh(targetUrl);
 const arg = process.argv[2];
 
 // Definisci una regex per estrarre la parte desiderata dell'URL
-const regex = /https:\/\/www\.wittytv\.it\/temptation-island\/([^\/]+)\//;
+const regex = /https:\/\/www\.wittytv\.it\/[^\/]+\/([^\/]+)\/?/;
 
 // Applica la regex all'argomento
 const match = arg.match(regex);
