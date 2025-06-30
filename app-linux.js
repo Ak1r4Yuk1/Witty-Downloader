@@ -106,7 +106,6 @@ if (secondButton) {
     //console.log("Secondo bottone non trovato.");
 }
 
-console.log("Manca poco...");
 await sleep(35000); // Aspetta 35 secondi
 await browser.close();
 const [MPDurl] = printedUrls;
@@ -190,7 +189,7 @@ function get_key(psshkey){
             }
           });
           console.log("License URL:", licenseURL)
-          console.log("Chiavi estratte, adesso scarichiamo il video")
+          console.log("Chiavi estratte, adesso scarichiamo il video. (Ci vogliono 5/8 min tra download e muxing - STIMA SU UN VIDEO DI 3 ORE)")
           fs.writeFile('data.licurl', licenseURL, (err) => {
             if (err) {
               console.error('Errore durante la scrittura del file:', err);
