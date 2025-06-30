@@ -11,7 +11,7 @@ NOTA: Se lo script non funziona usa una VPN
 - N_m3u8dl-re (https://github.com/nilaoda/N_m3u8DL-RE) 
 - Bento MP4Decrpt (https://github.com/axiomatic-systems/Bento4/blob/master/Source/C%2B%2B/Apps/Mp4Decrypt/Mp4Decrypt.cpp)
 
-Sia per N_m3u8dl-re che per Bento MP4Decrpt ho gia messo gli eseguibili necessari, in ogni altro caso puoi scarricare e compilare dai relativi sorgenti entrambi gli eseguibili.
+Sia per N_m3u8dl-re che per Bento MP4Decrpt ho gia messo gli eseguibili necessari, in ogni altro caso puoi scaricare e compilare dai relativi sorgenti entrambi gli eseguibili.
 
 ## Installazione
 
