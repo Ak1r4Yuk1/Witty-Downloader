@@ -1,4 +1,5 @@
-﻿# Witty-Downloader (Windows e Linux) - Questa versione non funziona più per via delle nuove limitazioni, dai un occhiata alla nuova versione
+﻿# Witty-Downloader (Windows e Linux)
+##  Questa versione non funziona più per via delle nuove limitazioni, dai un occhiata alla nuova versione
 
 Witty-Downloader è uno strumento potente e semplice da usare per scaricare video da Witty TV. Con questo downloader, puoi facilmente salvare i tuoi programmi preferiti per la visione offline.
 
